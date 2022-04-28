@@ -1,0 +1,6 @@
+                    Chess Plans
+
+Piece-Interface: All pieces implement
+                 Has getColor, findMoves, move
+
+Types of pieces: Pawn, Rook, Bishop, Knight, King, Queen
