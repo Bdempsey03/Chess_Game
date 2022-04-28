@@ -1,4 +1,13 @@
 package Graphics;
 
-public class Bishop {
+import javax.swing.*;
+import java.awt.*;
+
+public class Bishop extends JComponent {
+
+
+    @Override
+    protected void paintComponent(Graphics g){
+
+    }
 }
