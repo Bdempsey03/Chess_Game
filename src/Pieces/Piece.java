@@ -3,10 +3,9 @@ package Pieces;
 import java.util.ArrayList;
 
 public interface Piece {
-    int color = 0;
-    int getColor();
+    char colour = 'x';
+    char getColor();
     ArrayList<Move> listMoves();
-
 
 
 }
