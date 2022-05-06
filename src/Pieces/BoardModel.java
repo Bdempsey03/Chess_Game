@@ -1,5 +1,6 @@
 package Pieces;
 
+//not used
 public class BoardModel {
     private Piece[][] board = new Piece[8][8];
 

@@ -17,12 +17,8 @@ public class Game {
 
         boardModel = new BoardModel();
         boardModel.boardSetup();
-//        Board board = new Board();
-//        JFrame frame = new JFrame();
-//        frame.add(board);
-//        frame.setSize(810,900);
-//        frame.setVisible(true);
-//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        System.out.println(BoardSquare.boardToString());
+        System.out.println(BoardSquare.piecesToString());
 
     }
 

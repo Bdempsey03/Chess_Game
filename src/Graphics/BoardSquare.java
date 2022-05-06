@@ -21,6 +21,7 @@ public class BoardSquare extends JComponent {
 
     public static BoardSquare[][] theBoard = new BoardSquare[8][8];
 
+
     private final SquareID ID;
     private Piece pieceOnSquare;
     private final int x;
@@ -29,14 +30,21 @@ public class BoardSquare extends JComponent {
     private final int w;
     private final char c;
     private boolean clicked = false;
-
+    private boolean selected = false;
+    private static ArrayList<Move> moves = new ArrayList<Move>();
+    private static int j = 0;
     private static int i = 0;
     private static int k = 0;
+    private boolean init = false;
+    private boolean used = false;
+    private static BoardSquare start;
+    private static BoardSquare end;
 
     private final MouseListener AL= new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
             clicked=true;
+            selected=true;
             repaint();
         }
     };
@@ -61,6 +69,10 @@ public class BoardSquare extends JComponent {
 
     @Override
     protected void paintComponent(Graphics g){
+        if(!init){
+            moves.add(new Move());
+            init=true;
+        }
         Graphics2D g2d = (Graphics2D)g;
         setImages();
         if(c=='b')
@@ -68,11 +80,39 @@ public class BoardSquare extends JComponent {
         else
             g2d.setColor(new Color(210, 180, 140));
         g2d.fillRect(x,y,z,w);
-        if(clicked){
-            g2d.setColor(Color.RED);
-            g2d.drawRect(x,y,z,w);
-            System.out.println(ID);
-            clicked=false;
+
+        if(clicked) {
+//            setPieceOnSquare(null);
+
+            if (selected) {
+                while(!used){
+                if(moves.get(j).getStart().equals("null")){
+                    moves.get(j).setStart(this+"");
+                    start=this;
+                    used=true;
+                }else{
+                    if(moves.get(j).getEnd().equals("null")){
+                    moves.get(j).setEnd(this+"");
+//                    if(validMove(moves.get(j))){
+                        System.out.println("HI");
+                        end=this;
+                        movePieceOnSquare(start, end, moves.get(j));
+
+//                    }
+
+                    used=true;
+                }else{
+                        moves.add(new Move());
+                        j++;
+                }}}used=false;
+
+                System.out.println(moves);
+                g2d.setColor(Color.RED);
+                g2d.drawRect(x, y, z, w);
+                System.out.println(ID);
+                clicked = false;
+                System.out.println(piecesToString());
+            }
         }
 
         if(pieceOnSquare !=null) {
@@ -143,8 +183,72 @@ public class BoardSquare extends JComponent {
             System.out.println("Missing one or more images");
         }
     }
+
+    /**
+     * Method for making moves
+     * @return
+     */
+    public boolean validMove(BoardSquare[][] theBoard , Piece thePiece, Move theMove){
+        return thePiece.validMove(theBoard, theMove);
+    }
+
+    /**
+     * This is responsible for taking a starting and ending square and moving the image. !!NOT LOGIC!!
+     * @param start starting square
+     * @param end ending square
+     * @param move the move to be made
+     */
+    public void movePieceOnSquare(BoardSquare start, BoardSquare end, Move move){
+
+        if(start.pieceOnSquare!=null){
+            System.out.println("hello");
+            Piece piece = start.pieceOnSquare;
+            start.setPieceOnSquare(null);
+
+            for(int i=0; i<8; i++){
+                for(int k=0; k<8; k++){
+                    if(theBoard[i][k].getID().equals(move.getEnd())){
+                        theBoard[i][k].setPieceOnSquare(piece);
+                    }
+                }
+            }
+            start.repaint();
+            System.out.println(start.pieceOnSquare);
+            end.repaint();
+            System.out.println(end.pieceOnSquare);
+        }
+    }
+
+    public String getID(){
+        return ID.toString();
+    }
+
     @Override
     public String toString(){
         return ID+"";
+    }
+
+    public static String boardToString(){
+        StringBuilder str= new StringBuilder();
+        for(int i = 0; i<8; i++){
+            for(int k = 0; k<8; k++){
+                str.append("[").append(theBoard[k][i]).append("]");
+            }
+            str.append("\n");
+        }return str.toString();
+    }
+
+
+    public static String piecesToString(){
+        StringBuilder str= new StringBuilder();
+        for(int i = 0; i<8; i++){
+            for(int k = 0; k<8; k++){
+                if(theBoard[k][i].pieceOnSquare==null)
+                    str.append("[X]");
+                else
+                str.append("[").append(theBoard[k][i].pieceOnSquare).append("]");
+            }
+            str.append("\n");
+        }return str.toString();
     }
 }
