@@ -1,5 +1,6 @@
 package Graphics;
 
+import GameParts.Game;
 import Pieces.*;
 
 import javax.imageio.ImageIO;

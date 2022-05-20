@@ -1,6 +1,6 @@
 package Pieces;
 
-import Graphics.Board;
+import GameParts.Move;
 import Graphics.BoardSquare;
 
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
 package Graphics;
 
+import GameParts.Move;
 import Pieces.*;
 
 import javax.imageio.ImageIO;

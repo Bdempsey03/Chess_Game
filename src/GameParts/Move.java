@@ -1,4 +1,4 @@
-package Pieces;
+package GameParts;
 
 public class Move {
     private String start = "null";
