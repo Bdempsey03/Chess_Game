@@ -12,6 +12,7 @@ public class GUI {
         JFrame frame = new JFrame();
         frame.setSize(640, 640);
         frame.setLayout(new GridLayout(8,8));
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         int ctr=0;
 

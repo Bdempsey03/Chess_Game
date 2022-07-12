@@ -1,5 +1,6 @@
 package Graphics;
 
+import GameParts.Game;
 import GameParts.Move;
 import Pieces.*;
 
@@ -201,22 +202,25 @@ public class BoardSquare extends JComponent {
      */
     public void movePieceOnSquare(BoardSquare start, BoardSquare end, Move move){
 
-        if(start.pieceOnSquare!=null){
-            System.out.println("hello");
-            Piece piece = start.pieceOnSquare;
-            start.setPieceOnSquare(null);
+        if(start.pieceOnSquare!=null) {
+            if (start.pieceOnSquare.getColor() == Game.getPlayerTurn()) {
+                Piece piece = start.pieceOnSquare;
+                start.setPieceOnSquare(null);
 
-            for(int i=0; i<8; i++){
-                for(int k=0; k<8; k++){
-                    if(theBoard[i][k].getID().equals(move.getEnd())){
-                        theBoard[i][k].setPieceOnSquare(piece);
+                for (int i = 0; i < 8; i++) {
+                    for (int k = 0; k < 8; k++) {
+                        if (theBoard[i][k].getID().equals(move.getEnd())) {
+                            theBoard[i][k].setPieceOnSquare(piece);
+                        }
                     }
                 }
+                start.repaint();
+                System.out.println(start.pieceOnSquare);
+                end.repaint();
+                System.out.println(end.pieceOnSquare);
+                Game.toggleTurn();
+                System.out.println(Game.getPlayerTurn());
             }
-            start.repaint();
-            System.out.println(start.pieceOnSquare);
-            end.repaint();
-            System.out.println(end.pieceOnSquare);
         }
     }
 
