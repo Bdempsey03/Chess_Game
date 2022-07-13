@@ -76,12 +76,7 @@ public class OUTDATED_BOARD extends JComponent {
          * This is where all the pieces are drawn on the board
          */
 
-//        double scale =(((double)dimension/100));
-//        int newDimension = ((100/dimension));
 
-//        g2d.scale(scale, scale);
-
-//        g2d.scale(0.86,0.86);
         for (int i = 0; i < 8; i++) {
             for (int k = 0; k < 8; k++) {
                 if (boardModel.getBoardArr()[i][k] != null) {

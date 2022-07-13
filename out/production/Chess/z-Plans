@@ -4,3 +4,43 @@ Piece-Interface: All pieces implement
                  Has getColor, findMoves, move
 
 Types of pieces: Pawn, Rook, Bishop, Knight, King, Queen
+
+CHESS MOVING RULES:
+
+PAWN:
+    -Typically can only move forward one
+    -Can move forward two if first move and nothing in the way
+    -Can move diagonally if an opponent's piece is occupying *capture
+    -En passant (can take opponent's pawn if beside and opponent's pawn has just moved 2 spaces, take by moving diagonal)
+    -Becomes queen if it reaches other end
+
+ROOK:
+    -Can typically move left, right, up, down until hitting an edge or piece
+        -if it hits same colour, then stop 1 space before. If it hits opposite color then take
+    -Castling
+
+KNIGHT:
+    -Can typically move in L shape.
+        -Left one, up two.
+        -Left one, down two.
+        -Right one, Up two.
+        -Right one, down two.
+        -Up one, left two.
+        -Up one, right two.
+        -Down one, left two.
+        -Down one, right two.
+    -Can move as long as the end tile is not occupied by same colour
+
+BISHOP:
+    -Can typically move diagonally until hitting an edge or piece
+        -If same colour, then stop one tile before. If opposite colour, capture.
+
+QUEEN:
+    -Can typically move diagonally, left/right, up/down until hitting a piece.
+
+KING:
+    -Can typically move in any direction one tile
+    -Cannot move into a position to be taken
+    -Must be moved if being "checked"
+
+

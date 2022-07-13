@@ -5,7 +5,9 @@ import Pieces.*;
 import static Graphics.BoardSquare.theBoard;
 
 public class Board {
-
+    /**
+     * This method sets the pieces on the board to be the appropriate start configuration
+     */
     public static void boardSetup(){
         theBoard[0][0].setPieceOnSquare(new RookModel('w'));
         theBoard[7][0].setPieceOnSquare(new RookModel('w'));
