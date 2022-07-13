@@ -14,15 +14,15 @@ public class Game {
         GUI.boardGridSetup();
         Board.boardSetup();
         Game.start();
-        for(int j=0; j<BoardSquare.theBoard.length;j++)
-            for(int p=0; p<BoardSquare.theBoard.length;p++)
-                System.out.println(BoardSquare.theBoard[j][p]);
+//        for(int j=0; j<BoardSquare.theBoard.length;j++)
+//            for(int p=0; p<BoardSquare.theBoard.length;p++)
+//                System.out.println(BoardSquare.theBoard[j][p]);
 
 
-        boardModel = new BoardModel();
-        boardModel.boardSetup();
-        System.out.println(BoardSquare.boardToString());
-        System.out.println(BoardSquare.piecesToString());
+//        boardModel = new BoardModel();
+//        boardModel.boardSetup();
+//        System.out.println(BoardSquare.boardToString());
+//        System.out.println(BoardSquare.piecesToString());
 
     }
 

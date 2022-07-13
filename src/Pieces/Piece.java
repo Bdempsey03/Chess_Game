@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public interface Piece {
     char colour = 'x';
     char getColor();
-    boolean validMove(BoardSquare[][] theBoard, Move theMove);
+    ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start);
     ArrayList<Move> listMoves();
     public String toString();
 

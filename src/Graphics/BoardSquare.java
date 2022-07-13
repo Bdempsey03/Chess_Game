@@ -19,7 +19,10 @@ public class BoardSquare extends JComponent {
 
     BufferedImage wPawn;BufferedImage wRook;BufferedImage wBishop;BufferedImage wKnight;BufferedImage wKing;BufferedImage wQueen;
 
-
+/*
+The chess board is represented by this public member variable and is accessible by all classes. It is an 8x8 grid
+of board squares.
+ */
 
     public static BoardSquare[][] theBoard = new BoardSquare[8][8];
 
@@ -110,7 +113,7 @@ public class BoardSquare extends JComponent {
 
                 System.out.println(moves);
                 g2d.setColor(Color.RED);
-                g2d.drawRect(x, y, z, w);
+                g2d.drawRect(x+1, y-1, z, w-1);
                 System.out.println(ID);
                 clicked = false;
                 System.out.println(piecesToString());
@@ -190,9 +193,9 @@ public class BoardSquare extends JComponent {
      * Method for making moves
      * @return
      */
-    public boolean validMove(BoardSquare[][] theBoard , Piece thePiece, Move theMove){
-        return thePiece.validMove(theBoard, theMove);
-    }
+//    public ArrayList<Move> validMove(BoardSquare[][] theBoard , Piece thePiece, Move theMove){
+//        return thePiece.validMove(theBoard, theMove);
+//    }
 
     /**
      * This is responsible for taking a starting and ending square and moving the image. !!NOT LOGIC!!
@@ -243,13 +246,16 @@ public class BoardSquare extends JComponent {
         }return str.toString();
     }
 
-
+    /**
+     * Prints out the chess board in console with white being on the top
+     * @return board string
+     */
     public static String piecesToString(){
         StringBuilder str= new StringBuilder();
         for(int i = 0; i<8; i++){
             for(int k = 0; k<8; k++){
                 if(theBoard[k][i].pieceOnSquare==null)
-                    str.append("[X]");
+                    str.append("[ ]");
                 else
                 str.append("[").append(theBoard[k][i].pieceOnSquare).append("]");
             }

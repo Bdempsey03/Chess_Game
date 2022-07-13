@@ -18,8 +18,12 @@ public class BishopModel implements Piece{
     }
 
     @Override
-    public boolean validMove(BoardSquare[][] theBoard, Move theMove) {
-        return true;//HOLDERRRRR
+    public ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start) {
+        ArrayList<Move> moves = new ArrayList<>();
+
+
+
+        return moves;
     }
 
     @Override

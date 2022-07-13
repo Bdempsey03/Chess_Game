@@ -18,8 +18,12 @@ public class QueenModel implements Piece{
     }
 
     @Override
-    public boolean validMove(BoardSquare[][] theBoard, Move theMove) {
-        return false;//HOLDER
+    public ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start) {
+        ArrayList<Move> moves = new ArrayList<>();
+
+
+
+        return moves;
     }
 
     @Override

@@ -18,18 +18,17 @@ public class RookModel implements Piece{
     }
 
     @Override
-    public boolean validMove(BoardSquare[][] theBoard, Move theMove) {
-        BoardSquare boardSquare;
-        for (int i = 0; i < 8; i++) {
-            for (int k = 0; k < 8; k++) {
-                if (theMove.getStart().equals(theBoard[i][k].toString())){
-                    boardSquare=theBoard[i][k];
-                }
-            }
+    public ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start) {
+        int x = start.getX();
+        ArrayList<Move> moves = new ArrayList<>();
 
-
+        for(int i = 0; i<8; i++){
+//            if(theBoard[)
         }
-        return true;
+
+
+
+        return moves;
     }
 
 
