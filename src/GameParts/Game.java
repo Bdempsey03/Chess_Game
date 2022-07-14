@@ -32,7 +32,7 @@ public class Game {
 
     public static void start(){
 
-        white.setTurn(true);
+        white.setTurn(true);//black.setTurn(true); isnt working for some reason
         //needs more stuff
 
     }

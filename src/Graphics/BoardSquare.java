@@ -208,12 +208,24 @@ of board squares.
         if(start.pieceOnSquare!=null) {
             if (start.pieceOnSquare.getColor() == Game.getPlayerTurn()) {
                 Piece piece = start.pieceOnSquare;
-                start.setPieceOnSquare(null);
+                Piece tester = new TestPieceWithEveryMove();//THESE TWO LINES ARE GOING TO BE CHANGED vvv
+                ArrayList<Move> moves = tester.validMove(theBoard, start);
+//                start.setPieceOnSquare(null);
 
                 for (int i = 0; i < 8; i++) {
                     for (int k = 0; k < 8; k++) {
                         if (theBoard[i][k].getID().equals(move.getEnd())) {
-                            theBoard[i][k].setPieceOnSquare(piece);
+
+                            for (int j = 0; j < moves.size(); j++) {
+                                System.out.println("\u001B[47m" + move + " " + moves.get(j) + "\u001B[0m");
+                                System.out.println(move.toString().equals(moves.get(j).toString()));
+                                if (move.toString().equals(moves.get(j).toString())) {
+                                    start.setPieceOnSquare(null);
+                                    theBoard[i][k].setPieceOnSquare(piece);
+                                    break;
+                                }
+
+                            }
                         }
                     }
                 }
@@ -254,10 +266,15 @@ of board squares.
         StringBuilder str= new StringBuilder();
         for(int i = 0; i<8; i++){
             for(int k = 0; k<8; k++){
-                if(theBoard[k][i].pieceOnSquare==null)
-                    str.append("[ ]");
+                if((i+k)%2==1)
+                    str.append("\u001B[40m");
                 else
-                str.append("[").append(theBoard[k][i].pieceOnSquare).append("]");
+                    str.append("\u001B[47m" + "\u001B[30m");
+                if(theBoard[k][i].pieceOnSquare==null)
+                    str.append("   ");
+                else
+                str.append(" ").append(theBoard[k][i].pieceOnSquare).append(" ");
+                str.append("\u001B[0m");
             }
             str.append("\n");
         }return str.toString();
