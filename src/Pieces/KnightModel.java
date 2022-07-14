@@ -20,7 +20,7 @@ public class KnightModel implements Piece{
     @Override
     public ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start) {
         ArrayList<Move> moves = new ArrayList<>();
-
+        String startTile = start.getID();
 
 
         return moves;

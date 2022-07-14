@@ -113,7 +113,7 @@ of board squares.
 
                 System.out.println(moves);
                 g2d.setColor(Color.RED);
-                g2d.drawRect(x+1, y-1, z, w-1);
+                g2d.drawRect(x, y, z-3, w-6);
                 System.out.println(ID);
                 clicked = false;
                 System.out.println(piecesToString());

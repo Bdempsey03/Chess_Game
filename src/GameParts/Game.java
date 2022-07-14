@@ -6,7 +6,7 @@ public class Game {
     private static BoardModel boardModel;
     private static Player white = new Player("white");
     private static Player black = new Player("black");
-    public static Object lock = new Object();
+    public static final Object lock = new Object();
     private static char playerTurn = 'w';
 
     public static void main(String[] args) {
@@ -29,7 +29,9 @@ public class Game {
     public static BoardModel getBoard() {
         return boardModel;
     }
+
     public static void start(){
+
         white.setTurn(true);
         //needs more stuff
 
