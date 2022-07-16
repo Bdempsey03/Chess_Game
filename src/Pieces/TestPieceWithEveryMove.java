@@ -22,6 +22,7 @@ public class TestPieceWithEveryMove implements Piece {
                 moves.get(i*8+j).setEnd(BoardSquare.theBoard[i][j].getID());
             }
         }
+        moves.remove(0);
         System.out.println("\u001B[35m" + moves + "\u001B[0m");
         return moves;
     }

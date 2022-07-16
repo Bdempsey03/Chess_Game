@@ -209,7 +209,7 @@ of board squares.
             if (start.pieceOnSquare.getColor() == Game.getPlayerTurn()) {
                 Piece piece = start.pieceOnSquare;
                 Piece tester = new TestPieceWithEveryMove();//THESE TWO LINES ARE GOING TO BE CHANGED vvv
-                ArrayList<Move> moves = tester.validMove(theBoard, start);
+                ArrayList<Move> moves = piece.validMove(theBoard, start);
 //                start.setPieceOnSquare(null);
 
                 for (int i = 0; i < 8; i++) {
@@ -222,6 +222,7 @@ of board squares.
                                 if (move.toString().equals(moves.get(j).toString())) {
                                     start.setPieceOnSquare(null);
                                     theBoard[i][k].setPieceOnSquare(piece);
+                                    Game.toggleTurn();//IMPORTANT FOR TOGGLING TURN
                                     break;
                                 }
 
@@ -230,11 +231,9 @@ of board squares.
                     }
                 }
                 start.repaint();
-                System.out.println(start.pieceOnSquare);
                 end.repaint();
                 System.out.println(end.pieceOnSquare);
-                Game.toggleTurn();
-                System.out.println(Game.getPlayerTurn());
+                System.out.println(Game.getPlayerTurn() + " PLAYER TURN");
             }
         }
     }
@@ -278,5 +277,14 @@ of board squares.
             }
             str.append("\n");
         }return str.toString();
+    }
+
+    public int[] findBoardIndex(BoardSquare[][] theBoard){
+        for(int i = 0; i < 64; i++){
+            if (this.toString().equals(theBoard[i/8][i%8].toString())){
+                return new int[]{i/8, i%8};
+
+            }
+        }return new int[]{-1, -1};
     }
 }
