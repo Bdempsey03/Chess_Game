@@ -28,7 +28,7 @@ of board squares.
 
 
     private final SquareID ID;
-    private Piece pieceOnSquare;
+    private Piece pieceOnSquare = null;
     private final int x;
     private final int y;
     private final int z;
@@ -87,7 +87,6 @@ of board squares.
         g2d.fillRect(x,y,z,w);
 
         if(clicked) {
-//            setPieceOnSquare(null);
 
             if (selected) {
                 while(!used){
@@ -98,7 +97,6 @@ of board squares.
                 }else{
                     if(moves.get(j).getEnd().equals("null")){
                     moves.get(j).setEnd(this+"");
-//                    if(validMove(moves.get(j))){
                         System.out.println("HI");
                         end=this;
                         movePieceOnSquare(start, end, moves.get(j));
@@ -190,14 +188,6 @@ of board squares.
     }
 
     /**
-     * Method for making moves
-     * @return
-     */
-//    public ArrayList<Move> validMove(BoardSquare[][] theBoard , Piece thePiece, Move theMove){
-//        return thePiece.validMove(theBoard, theMove);
-//    }
-
-    /**
      * This is responsible for taking a starting and ending square and moving the image. !!NOT LOGIC!!
      * @param start starting square
      * @param end ending square
@@ -208,9 +198,7 @@ of board squares.
         if(start.pieceOnSquare!=null) {
             if (start.pieceOnSquare.getColor() == Game.getPlayerTurn()) {
                 Piece piece = start.pieceOnSquare;
-                Piece tester = new TestPieceWithEveryMove();//THESE TWO LINES ARE GOING TO BE CHANGED vvv
                 ArrayList<Move> moves = piece.validMove(theBoard, start);
-//                start.setPieceOnSquare(null);
 
                 for (int i = 0; i < 8; i++) {
                     for (int k = 0; k < 8; k++) {
@@ -219,21 +207,19 @@ of board squares.
                             for (int j = 0; j < moves.size(); j++) {
                                 System.out.println("\u001B[47m" + move + " " + moves.get(j) + "\u001B[0m");
                                 System.out.println(move.toString().equals(moves.get(j).toString()));
-                                if (move.toString().equals(moves.get(j).toString())) {
+                                if (move.toString().equals(moves.get(j).toString()))
+                                    if(theBoard[i][k].pieceOnSquare == null || theBoard[i][k].pieceOnSquare.getColor() != Game.getPlayerTurn()) {
                                     start.setPieceOnSquare(null);
                                     theBoard[i][k].setPieceOnSquare(piece);
                                     Game.toggleTurn();//IMPORTANT FOR TOGGLING TURN
                                     break;
                                 }
-
                             }
                         }
                     }
                 }
                 start.repaint();
                 end.repaint();
-                System.out.println(end.pieceOnSquare);
-                System.out.println(Game.getPlayerTurn() + " PLAYER TURN");
             }
         }
     }
@@ -245,16 +231,6 @@ of board squares.
     @Override
     public String toString(){
         return ID+"";
-    }
-
-    public static String boardToString(){
-        StringBuilder str= new StringBuilder();
-        for(int i = 0; i<8; i++){
-            for(int k = 0; k<8; k++){
-                str.append("[").append(theBoard[k][i]).append("]");
-            }
-            str.append("\n");
-        }return str.toString();
     }
 
     /**
@@ -286,5 +262,9 @@ of board squares.
 
             }
         }return new int[]{-1, -1};
+    }
+
+    public Piece getPieceOnSquare() {
+        return pieceOnSquare;
     }
 }
