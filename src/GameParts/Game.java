@@ -5,6 +5,8 @@ public class Game {
     private static final Player white = new Player("white");
     private static final Player black = new Player("black");
     private static char playerTurn = 'w';
+    private static boolean whiteCheck;
+    private static boolean blackCheck;
 
     public static void main(String[] args) {
 

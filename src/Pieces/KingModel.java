@@ -48,6 +48,35 @@ public class KingModel implements Piece {
 
         return moves;
     }
+
+    public boolean checkCheck(BoardSquare[][] theBoard, BoardSquare start){
+        int firstIndex = start.findBoardIndex(theBoard)[0];
+        int secondIndex = start.findBoardIndex(theBoard)[1];
+        char opponent;//opponent's colour
+        if(start.getPieceOnSquare().getColor()=='w') {
+            opponent = 'b';
+        }else {
+            opponent = 'w';
+        }
+        //In check from knight
+        if(theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
+            return true;
+        if(theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
+            return true;
+        if(theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
+            return true;
+        if(theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
+            return true;
+        if(theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
+            return true;
+        if(theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
+            return true;
+        if(theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
+            return true;
+        if(theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
+            return true;
+        return false;
+    }
     @Override
     public ArrayList<Move> listMoves() {
         return null;
@@ -57,3 +86,4 @@ public class KingModel implements Piece {
         return "K";
     }
 }
+

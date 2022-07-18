@@ -29,24 +29,24 @@ public class PawnModel implements Piece{
             moves.get(i).setStart(start.toString());
         }
         if(this.colour=='w') {
-            if(secondIndex+1<7)
+            if(secondIndex+1<7&&theBoard[firstIndex][secondIndex+1].getPieceOnSquare()==null)
                 moves.get(0).setEnd(theBoard[firstIndex][secondIndex+1].toString());
             if(firstIndex+1<=7&&secondIndex+1<=7&&theBoard[firstIndex+1][secondIndex+1].getPieceOnSquare()!=null&&theBoard[firstIndex+1][secondIndex+1].getPieceOnSquare().getColor() == 'b')
                 moves.get(1).setEnd(theBoard[firstIndex+1][secondIndex+1].toString());//taking diagonally
             if(firstIndex-1>=0&&secondIndex+1<=7&&theBoard[firstIndex-1][secondIndex+1].getPieceOnSquare()!=null&&theBoard[firstIndex-1][secondIndex+1].getPieceOnSquare().getColor() == 'b')
                 moves.get(2).setEnd(theBoard[firstIndex-1][secondIndex+1].toString());//taking diagonally
-            if(!this.movedOnce&&secondIndex+2<=7) {
+            if(!this.movedOnce&&secondIndex+2<=7&&theBoard[firstIndex][secondIndex+2].getPieceOnSquare()==null) {
                 moves.get(3).setEnd(theBoard[firstIndex][secondIndex + 2].toString());
                 movedOnce = true;
             }
         }else{
-            if(secondIndex-1>0)
+            if(secondIndex-1>0&&theBoard[firstIndex][secondIndex-1].getPieceOnSquare()==null)
                 moves.get(0).setEnd(theBoard[firstIndex][secondIndex-1].toString());
             if(firstIndex+1<=7&&secondIndex+1<=7&&theBoard[firstIndex+1][secondIndex-1].getPieceOnSquare()!=null&&theBoard[firstIndex+1][secondIndex-1].getPieceOnSquare().getColor() == 'w')
                 moves.get(1).setEnd(theBoard[firstIndex+1][secondIndex-1].toString());//taking diagonally
             if(firstIndex-1>=0&&secondIndex+1<=7&&theBoard[firstIndex-1][secondIndex-1].getPieceOnSquare()!=null&&theBoard[firstIndex-1][secondIndex-1].getPieceOnSquare().getColor() == 'w')
                 moves.get(2).setEnd(theBoard[firstIndex-1][secondIndex-1].toString());//taking diagonally
-            if(!this.movedOnce&&secondIndex-2>=0) {
+            if(!this.movedOnce&&secondIndex-2>=0&&theBoard[firstIndex][secondIndex-2].getPieceOnSquare()==null) {
                 moves.get(1).setEnd(theBoard[firstIndex][secondIndex - 2].toString());
                 movedOnce = true;
             }
