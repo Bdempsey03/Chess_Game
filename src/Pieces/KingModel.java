@@ -52,7 +52,7 @@ public class KingModel implements Piece {
         return moves;
     }
 
-    public boolean checkCheck(BoardSquare[][] theBoard, BoardSquare start){
+    public static boolean checkCheck(BoardSquare[][] theBoard, BoardSquare start){
         int firstIndex = start.findBoardIndex(theBoard)[0];
         int secondIndex = start.findBoardIndex(theBoard)[1];
         char opponent;//opponent's colour

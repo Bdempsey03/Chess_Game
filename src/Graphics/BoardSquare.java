@@ -97,7 +97,6 @@ of board squares.
                 }else{
                     if(moves.get(j).getEnd().equals("null")){
                     moves.get(j).setEnd(this+"");
-                        System.out.println("HI");
                         end=this;
                         movePieceOnSquare(start, end, moves.get(j));
 
@@ -218,6 +217,14 @@ of board squares.
                         }
                     }
                 }
+                //If the king was moved then it finds its new location
+                if(piece instanceof KingModel)
+                    if(piece.getColor() == 'w')
+                        KingModel.whiteKing = KingModel.locateKing(theBoard, piece.getColor());
+                if(piece.getColor() == 'b')
+                    KingModel.blackKing = KingModel.locateKing(theBoard, piece.getColor());
+                System.out.println("WKING - BKING" + KingModel.whiteKing + " - " + KingModel.blackKing);
+
                 start.repaint();
                 end.repaint();
             }
@@ -262,6 +269,14 @@ of board squares.
 
             }
         }return new int[]{-1, -1};
+    }
+
+    public static BoardSquare matchIndexToBoard(String index, BoardSquare[][] theBoard) throws Exception {
+        for(int i = 0; i<64; i++){
+            if(theBoard[i/8][i%8].toString().equals(index))
+            return theBoard[i/8][i%8];
+        }
+        throw(new Exception("Not a valid index"));
     }
 
     public Piece getPieceOnSquare() {

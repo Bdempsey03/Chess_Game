@@ -32,11 +32,13 @@ public class Game {
             playerTurn = 'b';
             white.setTurn(false);
             black.setTurn(true);
+
         }else{
             playerTurn = 'w';
             white.setTurn(true);
             black.setTurn(false);
         }
+
     }
     public static char getPlayerTurn(){
         return playerTurn;
