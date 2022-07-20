@@ -7,9 +7,12 @@ import java.util.ArrayList;
 
 public class KingModel implements Piece {
     private final char colour;
+    public static BoardSquare blackKing;
+    public static BoardSquare whiteKing;
 
     public KingModel(char colour) {
         this.colour = colour;
+   
     }
 
     @Override
@@ -59,20 +62,28 @@ public class KingModel implements Piece {
             opponent = 'w';
         }
         //In check from knight
+        if(firstIndex+1<=7 && secondIndex+2<=7)
         if(theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
             return true;
+        if(firstIndex-1>=0 && secondIndex+2>=7)
         if(theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
             return true;
+        if(firstIndex+1<=7 && secondIndex-2>=0)
         if(theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
             return true;
+        if(firstIndex-1>=0 && secondIndex-2>=0)
         if(theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
             return true;
+        if(firstIndex+2<=7 && secondIndex+1<=7)
         if(theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
             return true;
+        if(firstIndex-2>=0 && secondIndex+1<=7)
         if(theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
             return true;
+        if(firstIndex+2<=7&&secondIndex-1>=0)
         if(theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
             return true;
+        if(firstIndex-2>=0 && secondIndex-1>=0)
         if(theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
             return true;
         return false;
@@ -84,6 +95,14 @@ public class KingModel implements Piece {
 
     public String toString() {
         return "K";
+    }
+    public static BoardSquare locateKing(BoardSquare[][] theBoard, char colour){
+        for(int i = 0; i<64; i++){
+            if(theBoard[i/8][i%8].getPieceOnSquare() instanceof KingModel)
+            if(theBoard[i/8][i%8].getPieceOnSquare().getColor() == colour)
+            return theBoard[i/8][i%8];
+        }
+        return new BoardSquare(0, 0, 0, 0, '0', null);
     }
 }
 

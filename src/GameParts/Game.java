@@ -1,5 +1,6 @@
 package GameParts;
 import Graphics.*;
+import Pieces.KingModel;
 
 public class Game {
     private static final Player white = new Player("white");
@@ -20,6 +21,10 @@ public class Game {
 
     public static void start(){
         white.setTurn(true);//black.setTurn(true); isnt working for some reason
+        KingModel.blackKing = KingModel.locateKing(BoardSquare.theBoard, 'b');
+        KingModel.whiteKing = KingModel.locateKing(BoardSquare.theBoard, 'w');
+        System.out.println(KingModel.blackKing);
+        System.out.println(KingModel.whiteKing);
     }
 
     public static void toggleTurn(){
