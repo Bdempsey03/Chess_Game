@@ -62,30 +62,31 @@ public class KingModel implements Piece {
             opponent = 'w';
         }
         //In check from knight
-        if(firstIndex+1<=7 && secondIndex+2<=7)
+        if(firstIndex+1<=7 && secondIndex+2<=7 && theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare() != null)
         if(theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
             return true;
-        if(firstIndex-1>=0 && secondIndex+2>=7)
+        if(firstIndex-1>=0 && secondIndex+2<=7 && theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare() != null)
         if(theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
             return true;
-        if(firstIndex+1<=7 && secondIndex-2>=0)
+        if(firstIndex+1<=7 && secondIndex-2>=0 && theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare() != null)
         if(theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
             return true;
-        if(firstIndex-1>=0 && secondIndex-2>=0)
+        if(firstIndex-1>=0 && secondIndex-2>=0 && theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare() != null)
         if(theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
             return true;
-        if(firstIndex+2<=7 && secondIndex+1<=7)
+        if(firstIndex+2<=7 && secondIndex+1<=7 && theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare() != null)
         if(theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
             return true;
-        if(firstIndex-2>=0 && secondIndex+1<=7)
+        if(firstIndex-2>=0 && secondIndex+1<=7 && theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare() != null)
         if(theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
             return true;
-        if(firstIndex+2<=7&&secondIndex-1>=0)
+        if(firstIndex+2<=7&&secondIndex-1>=0 && theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare() != null)
         if(theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
             return true;
-        if(firstIndex-2>=0 && secondIndex-1>=0)
+        if(firstIndex-2>=0 && secondIndex-1>=0 && theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare() != null)
         if(theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
             return true;
+        //end of knight
         return false;
     }
     @Override
