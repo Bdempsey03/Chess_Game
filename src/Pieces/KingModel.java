@@ -55,38 +55,111 @@ public class KingModel implements Piece {
     public static boolean checkCheck(BoardSquare[][] theBoard, BoardSquare start){
         int firstIndex = start.findBoardIndex(theBoard)[0];
         int secondIndex = start.findBoardIndex(theBoard)[1];
+        char myColour = start.getPieceOnSquare().getColor();
         char opponent;//opponent's colour
+        ArrayList<Move> holderOfMoves;
         if(start.getPieceOnSquare().getColor()=='w') {
             opponent = 'b';
         }else {
             opponent = 'w';
         }
-        //In check from knight
-        if(firstIndex+1<=7 && secondIndex+2<=7 && theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare() != null)
-        if(theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
-            return true;
-        if(firstIndex-1>=0 && secondIndex+2<=7 && theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare() != null)
-        if(theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
-            return true;
-        if(firstIndex+1<=7 && secondIndex-2>=0 && theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare() != null)
-        if(theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
-            return true;
-        if(firstIndex-1>=0 && secondIndex-2>=0 && theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare() != null)
-        if(theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
-            return true;
-        if(firstIndex+2<=7 && secondIndex+1<=7 && theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare() != null)
-        if(theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
-            return true;
-        if(firstIndex-2>=0 && secondIndex+1<=7 && theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare() != null)
-        if(theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
-            return true;
-        if(firstIndex+2<=7&&secondIndex-1>=0 && theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare() != null)
-        if(theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
-            return true;
-        if(firstIndex-2>=0 && secondIndex-1>=0 && theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare() != null)
-        if(theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
-            return true;
-        //end of knight
+//        //In check from knight
+//        if(firstIndex+1<=7 && secondIndex+2<=7 && theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        if(firstIndex-1>=0 && secondIndex+2<=7 && theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex+2].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        if(firstIndex+1<=7 && secondIndex-2>=0 && theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        if(firstIndex-1>=0 && secondIndex-2>=0 && theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-1][secondIndex-2].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        if(firstIndex+2<=7 && secondIndex+1<=7 && theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        if(firstIndex-2>=0 && secondIndex+1<=7 && theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex+1].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        if(firstIndex+2<=7&&secondIndex-1>=0 && theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex+2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        if(firstIndex-2>=0 && secondIndex-1>=0 && theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare() != null)
+//        if(theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().toString().equals("N")&&theBoard[firstIndex-2][secondIndex-1].getPieceOnSquare().getColor()==opponent)
+//            return true;
+//        //end of knight
+//
+//        //check for pawn
+//        if(myColour == 'w') {
+//            if (firstIndex + 1 <= 7 && secondIndex + 1 <= 7)
+//                if (theBoard[firstIndex + 1][secondIndex + 1].getPieceOnSquare() != null && theBoard[firstIndex + 1][secondIndex + 1].getPieceOnSquare().toString().equals("P"))
+//                    if (theBoard[firstIndex + 1][secondIndex + 1].getPieceOnSquare().getColor() == opponent)
+//                        return true;
+//                    if (firstIndex - 1 >= 0 && secondIndex + 1 <= 7)
+//                        if (theBoard[firstIndex - 1][secondIndex + 1].getPieceOnSquare() != null && theBoard[firstIndex - 1][secondIndex + 1].getPieceOnSquare().toString().equals("P"))
+//                            if (theBoard[firstIndex - 1][secondIndex + 1].getPieceOnSquare().getColor() == opponent)
+//                                return true;
+//        }else if(myColour == 'b'){
+//            if (firstIndex + 1 <= 7 && secondIndex - 1 >= 0)
+//                if (theBoard[firstIndex + 1][secondIndex - 1].getPieceOnSquare() != null && theBoard[firstIndex + 1][secondIndex - 1].getPieceOnSquare().toString().equals("P"))
+//                    if (theBoard[firstIndex + 1][secondIndex - 1].getPieceOnSquare().getColor() == opponent)
+//                        return true;
+//            if (firstIndex - 1 >= 0 && secondIndex - 1 >= 0)
+//                if (theBoard[firstIndex - 1][secondIndex - 1].getPieceOnSquare() != null && theBoard[firstIndex - 1][secondIndex - 1].getPieceOnSquare().toString().equals("P"))
+//                    if (theBoard[firstIndex - 1][secondIndex - 1].getPieceOnSquare().getColor() == opponent)
+//                        return true;
+//        }
+//        //end of pawn
+//
+//        //check for rook
+//        //finds both opponent rooks, checks all valid moves for touching the king, returns true if a rook could "take the king next turn"
+
+        /**
+        Goes through all board squares until it find a rook. If the rook is the opponent's then it finds the legal moves and compares the
+        end of the legal moves (target) with the current position of the king. If they match then the king is in check.
+         */
+        for(int i = 0; i < 64; i++){
+            if(theBoard[i/8][i%8].getPieceOnSquare() != null)
+                if(theBoard[i/8][i%8].getPieceOnSquare().getColor() == opponent) {
+                    holderOfMoves = theBoard[i / 8][i % 8].getPieceOnSquare().validMove(theBoard, theBoard[i / 8][i % 8]);
+                    for (int j = 0; j < holderOfMoves.size(); j++) {
+                        if (holderOfMoves.get(j).getEnd().equals(start.toString()))
+                            return true;
+                    }
+                }
+        }
+//        /**
+//         Goes through all board squares until it find a bishop. If the bishop is the opponent's then it finds the legal moves and compares the
+//         end of the legal moves (target) with the current position of the king. If they match then the king is in check.
+//         */
+//        for(int i = 0; i < 64; i++){
+//            if(theBoard[i/8][i%8].getPieceOnSquare() != null && theBoard[i/8][i%8].getPieceOnSquare() instanceof BishopModel)
+//                if(theBoard[i/8][i%8].getPieceOnSquare().getColor() == opponent) {
+//                    holderOfMoves = theBoard[i / 8][i % 8].getPieceOnSquare().validMove(theBoard, theBoard[i / 8][i % 8]);
+//                    for (int j = 0; j < 28; j++) {
+//                        if (holderOfMoves.get(j).getEnd().equals(start.toString()))
+//                            return true;
+//                    }
+//                }
+//        }
+//        /**
+//         Goes through all board squares until it find a Queen. If the Queen is the opponent's then it finds the legal moves and compares the
+//         end of the legal moves (target) with the current position of the king. If they match then the king is in check.
+//         */
+//        for(int i = 0; i < 64; i++){
+//            if(theBoard[i/8][i%8].getPieceOnSquare() != null && theBoard[i/8][i%8].getPieceOnSquare() instanceof QueenModel)
+//                if(theBoard[i/8][i%8].getPieceOnSquare().getColor() == opponent) {
+//                    holderOfMoves = theBoard[i / 8][i % 8].getPieceOnSquare().validMove(theBoard, theBoard[i / 8][i % 8]);
+//                    for (int j = 0; j < 28; j++) {
+//                        if (holderOfMoves.get(j).getEnd().equals(start.toString()))
+//                            return true;
+//                    }
+//                }
+//        }
+
+
+
         return false;
     }
     @Override
