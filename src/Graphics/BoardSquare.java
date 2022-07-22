@@ -87,7 +87,6 @@ of board squares.
         g2d.fillRect(x,y,z,w);
 
         if(clicked) {
-
             if (selected) {
                 while(!used){
                 if(moves.get(j).getStart().equals("null")){
@@ -108,10 +107,10 @@ of board squares.
                         j++;
                 }}}used=false;
 
-                System.out.println(moves);
+//                System.out.println(moves);
                 g2d.setColor(Color.RED);
                 g2d.drawRect(x, y, z-3, w-6);
-                System.out.println(ID);
+//                System.out.println(ID);
                 clicked = false;
                 System.out.println(piecesToString());
             }
@@ -223,7 +222,7 @@ of board squares.
                         KingModel.whiteKing = KingModel.locateKing(theBoard, piece.getColor());
                 if(piece.getColor() == 'b')
                     KingModel.blackKing = KingModel.locateKing(theBoard, piece.getColor());
-                System.out.println("WKING - BKING" + KingModel.whiteKing + " - " + KingModel.blackKing);
+//                System.out.println("WKING - BKING" + KingModel.whiteKing + " - " + KingModel.blackKing);
 
                 start.repaint();
                 end.repaint();

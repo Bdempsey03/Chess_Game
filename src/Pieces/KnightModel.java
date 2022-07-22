@@ -1,5 +1,6 @@
 package Pieces;
 
+import GameParts.Game;
 import GameParts.Move;
 import Graphics.BoardSquare;
 
@@ -19,6 +20,8 @@ public class KnightModel implements Piece{
 
     @Override
     public ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start) {
+
+
         ArrayList<Move> moves = new ArrayList<>();
         int firstIndex = start.findBoardIndex(theBoard)[0];
         int secondIndex = start.findBoardIndex(theBoard)[1];
@@ -46,7 +49,7 @@ public class KnightModel implements Piece{
         if(firstIndex-2>=0&&secondIndex-1>=0)
         moves.get(7).setEnd(theBoard[firstIndex-2][secondIndex-1].toString());
 
-        System.out.println(moves);
+//        System.out.println(moves);
         return moves;
     }
     @Override

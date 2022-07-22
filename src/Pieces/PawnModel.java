@@ -7,10 +7,17 @@ import java.util.ArrayList;
 
 public class PawnModel implements Piece{
     private final char colour;
-    private boolean movedOnce = false;
+    private boolean movedOnce;
+
+    private static int count = 0;
+
+    private int pawnID;
 
     public PawnModel(char colour){
     this.colour=colour;
+    this.movedOnce=false;
+    pawnID = count;
+    count++;
     }
 
     @Override
@@ -20,6 +27,9 @@ public class PawnModel implements Piece{
 
     @Override
     public ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start) {
+
+
+
         ArrayList<Move> moves = new ArrayList<>();
         int firstIndex = start.findBoardIndex(theBoard)[0];
         int secondIndex = start.findBoardIndex(theBoard)[1];
@@ -37,7 +47,7 @@ public class PawnModel implements Piece{
                 moves.get(2).setEnd(theBoard[firstIndex-1][secondIndex+1].toString());//taking diagonally
             if(!this.movedOnce&&secondIndex+2<=7&&theBoard[firstIndex][secondIndex+2].getPieceOnSquare()==null) {
                 moves.get(3).setEnd(theBoard[firstIndex][secondIndex + 2].toString());
-                movedOnce = true;
+                this.movedOnce = true;
             }
         }else{
             if(secondIndex-1>0&&theBoard[firstIndex][secondIndex-1].getPieceOnSquare()==null)
@@ -48,7 +58,8 @@ public class PawnModel implements Piece{
                 moves.get(2).setEnd(theBoard[firstIndex-1][secondIndex-1].toString());//taking diagonally
             if(!this.movedOnce&&secondIndex-2>=0&&theBoard[firstIndex][secondIndex-2].getPieceOnSquare()==null) {
                 moves.get(1).setEnd(theBoard[firstIndex][secondIndex - 2].toString());
-                movedOnce = true;
+                this.movedOnce = true;
+
             }
         }
         return moves;

@@ -1,5 +1,6 @@
 package Pieces;
 
+import GameParts.Game;
 import GameParts.Move;
 import Graphics.BoardSquare;
 
@@ -23,6 +24,9 @@ public class BishopModel implements Piece{
 
     @Override
     public ArrayList<Move> validMove(BoardSquare[][] theBoard, BoardSquare start) {
+
+
+
         ArrayList<Move> moves = new ArrayList<>();
         hitDR = false;
         hitDL = false;
