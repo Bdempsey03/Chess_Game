@@ -209,6 +209,8 @@ of board squares.
                                     if(theBoard[i][k].pieceOnSquare == null || theBoard[i][k].pieceOnSquare.getColor() != Game.getPlayerTurn()) {
                                     start.setPieceOnSquare(null);
                                     theBoard[i][k].setPieceOnSquare(piece);
+                                    if(theBoard[i][k].getPieceOnSquare() instanceof PawnModel)
+                                        ((PawnModel) theBoard[i][k].getPieceOnSquare()).setMovedOnce(true);
                                     Game.toggleTurn();//IMPORTANT FOR TOGGLING TURN
                                     break;
                                 }

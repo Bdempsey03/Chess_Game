@@ -45,8 +45,8 @@ public class Game {
             whiteCheck = KingModel.checkCheck(BoardSquare.theBoard, whiteKing);//check to see if the white king is in check
         }
         System.out.println("BLACK CHECK: " + blackCheck + "\nWHITE CHECK: "+ whiteCheck);
-        if(whiteCheck || blackCheck)
-        System.exit(-8);
+//        if(whiteCheck || blackCheck)
+//        System.exit(-8);
     }
     public static char getPlayerTurn(){
         return playerTurn;
