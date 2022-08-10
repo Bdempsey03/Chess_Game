@@ -84,6 +84,7 @@ public class KingModel implements Piece {
     public String toString() {
         return "K";
     }
+
     public static BoardSquare locateKing(BoardSquare[][] theBoard, char colour){
         for(int i = 0; i<64; i++){
             if(theBoard[i/8][i%8].getPieceOnSquare() instanceof KingModel)
