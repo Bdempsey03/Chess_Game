@@ -82,6 +82,7 @@ of board squares.
         }
     }
 
+
     @Override
     protected void paintComponent(Graphics g) {
         if (!init) {
@@ -178,6 +179,9 @@ of board squares.
     public void setPieceOnSquare(Piece p) {
         pieceOnSquare = p;
         repaint();
+    }
+    public void tempSetPieceOnSquare(Piece p){
+        pieceOnSquare = p;
     }
 
     private void setImages() {
@@ -315,7 +319,8 @@ of board squares.
         ArrayList<Move> moves = new ArrayList<>();
         for (int i = 0; i < oldMoves.size(); i++) {
             if (!oldMoves.get(i).getEnd().equals("null")) {
-                for (int j = 0; j < 64; j++) {
+                for (int j = 0; j < 64; j++) {//needs to be new objects. Not pointers
+                    tempBoard[j / 8][j % 8] = new BoardSquare(piece)
                     tempBoard[j / 8][j % 8] = theBoard[j / 8][j % 8];
                 }
 
@@ -325,7 +330,7 @@ of board squares.
                 a = theEnd.findBoardIndex(theBoard)[0];//first dimension index
                 b = theEnd.findBoardIndex(theBoard)[1];//second dimension index
 
-                tempBoard[a][b].setPieceOnSquare(this.pieceOnSquare);
+                tempBoard[a][b].tempSetPieceOnSquare(this.pieceOnSquare);
                 if ((whiteTurn && KingModel.checkCheck(tempBoard, KingModel.locateKing(tempBoard, 'w'))))
                     oldMoves.set(i, new Move());
                 if ((!whiteTurn && KingModel.checkCheck(tempBoard, KingModel.locateKing(tempBoard, 'b'))))
