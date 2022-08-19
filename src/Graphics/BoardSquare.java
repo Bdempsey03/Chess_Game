@@ -308,6 +308,13 @@ of board squares.
         return pieceOnSquare;
     }
 
+
+    /**
+     * This method is supposed to go through the list of possible moves and remove any that cause check.
+     * @param oldMoves
+     * @param theBoard
+     * @return
+     */
     public ArrayList<Move> removedCheckMoves(ArrayList<Move> oldMoves, BoardSquare[][] theBoard) {
         int a;//indices for theBoard
         int b;
@@ -320,7 +327,7 @@ of board squares.
         for (int i = 0; i < oldMoves.size(); i++) {
             if (!oldMoves.get(i).getEnd().equals("null")) {
                 for (int j = 0; j < 64; j++) {//needs to be new objects. Not pointers
-                    tempBoard[j / 8][j % 8] = new BoardSquare(piece)
+//                    tempBoard[j / 8][j % 8] = new BoardSquare(Piece);
                     tempBoard[j / 8][j % 8] = theBoard[j / 8][j % 8];
                 }
 
