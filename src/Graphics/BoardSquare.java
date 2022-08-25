@@ -186,19 +186,19 @@ of board squares.
 
     private void setImages() {
         try {
-            bPawn = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\BlackPawn.png"));
-            bRook = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\BlackRook.png"));
-            bKnight = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\BlackKnight.png"));
-            bBishop = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\BlackBishop.png"));
-            bKing = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\BlackKing.png"));
-            bQueen = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\BlackQueen.png"));
+            bPawn = ImageIO.read(new File("src\\BlackPawn.png"));
+            bRook = ImageIO.read(new File("src\\BlackRook.png"));
+            bKnight = ImageIO.read(new File("src\\BlackKnight.png"));
+            bBishop = ImageIO.read(new File("src\\BlackBishop.png"));
+            bKing = ImageIO.read(new File("src\\BlackKing.png"));
+            bQueen = ImageIO.read(new File("src\\BlackQueen.png"));
 
-            wPawn = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\WhitePawn.png"));
-            wRook = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\WhiteRook.png"));
-            wKnight = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\WhiteKnight.png"));
-            wBishop = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\WhiteBishop.png"));
-            wKing = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\WhiteKing.png"));
-            wQueen = ImageIO.read(new File("C:\\Users\\Ben\\IdeaProjects\\Chess\\src\\WhiteQueen.png"));
+            wPawn = ImageIO.read(new File("src\\WhitePawn.png"));
+            wRook = ImageIO.read(new File("src\\WhiteRook.png"));
+            wKnight = ImageIO.read(new File("src\\WhiteKnight.png"));
+            wBishop = ImageIO.read(new File("src\\WhiteBishop.png"));
+            wKing = ImageIO.read(new File("src\\WhiteKing.png"));
+            wQueen = ImageIO.read(new File("src\\WhiteQueen.png"));
 
 
         } catch (IOException e) {
