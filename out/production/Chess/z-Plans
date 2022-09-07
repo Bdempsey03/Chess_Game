@@ -44,3 +44,6 @@ KING:
     -Must be moved if being "checked"
 
 
+
+Aug 25 changes:
+    converting theBoard into a Piece array rather than BoardSquare array

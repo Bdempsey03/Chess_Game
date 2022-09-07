@@ -91,7 +91,7 @@ public class KingModel implements Piece {
             if(theBoard[i/8][i%8].getPieceOnSquare().getColor() == colour)
             return theBoard[i/8][i%8];
         }
-        return new BoardSquare(0, 0, 0, 0, '0', null);
+        return new BoardSquare(0, 0, 0, 0, '0', null, false);
     }
 }
 

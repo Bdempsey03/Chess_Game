@@ -39,6 +39,7 @@ of board squares.
 
     private final SquareID ID;
     private Piece pieceOnSquare = null;
+    private final boolean render;
     private final int x;
     private final int y;
     private final int z;
@@ -64,8 +65,9 @@ of board squares.
         }
     };
 
-    public BoardSquare(int x, int y, int z, int w, char c, Piece piece) {
+    public BoardSquare(int x, int y, int z, int w, char c, Piece piece, boolean render) {
         pieceOnSquare = piece;
+        this.render = render;
         this.x = x;
         this.y = y;
         this.z = z;
@@ -81,6 +83,10 @@ of board squares.
             k++;
         }
     }
+//    public BoardSquare(BoardSquare square){
+//        this.ID = square.ID;
+//        this.pieceOnSquare = square.pieceOnSquare;
+//    }
 
 
     @Override
@@ -121,6 +127,7 @@ of board squares.
                 used = false;
 
                 g2d.setColor(Color.RED);
+                if(this.render)
                 g2d.drawRect(x, y, z - 3, w - 6);
 //                System.out.println(ID);
                 clicked = false;
@@ -128,7 +135,7 @@ of board squares.
             }
         }
 
-        if (pieceOnSquare != null) {
+        if (pieceOnSquare != null&&render) {
             if (pieceOnSquare instanceof PawnModel) {
                 if (pieceOnSquare.getColor() == 'w')
                     g2d.drawImage(wPawn, 0, 0, null);

@@ -19,13 +19,13 @@ public class GUI {
         while(ctr<8) {
             if (ctr % 2 == 0) {
                 for (int i = 0; i < 4; i++) {
-                    frame.add(new BoardSquare(0, 0, 80, 80, 'w', null));
-                    frame.add(new BoardSquare(0, 0, 80, 80, 'b', null));
+                    frame.add(new BoardSquare(0, 0, 80, 80, 'w', null, true));
+                    frame.add(new BoardSquare(0, 0, 80, 80, 'b', null, true));
                 }
             } else {
                 for (int i = 0; i < 4; i++) {
-                    frame.add(new BoardSquare(0, 0, 80, 80, 'b', null));
-                    frame.add(new BoardSquare(0, 0, 80, 80, 'w', null));
+                    frame.add(new BoardSquare(0, 0, 80, 80, 'b', null, true));
+                    frame.add(new BoardSquare(0, 0, 80, 80, 'w', null, true));
                 }
             }ctr++;
         }
