@@ -2,6 +2,8 @@ package GameParts;
 import Graphics.*;
 import Pieces.KingModel;
 
+//This is a comment
+
 import static Pieces.KingModel.blackKing;
 import static Pieces.KingModel.whiteKing;
 
