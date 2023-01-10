@@ -14,13 +14,13 @@ public class Game {
     private static boolean whiteCheck;
     private static boolean blackCheck;
 
-    public static void main(String[] args) {
-
+    public static void go(){
         GUI.boardGridSetup();
         Board.boardSetup();
         Game.start();
-
-
+    }
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(Game::go);
     }
 
 
